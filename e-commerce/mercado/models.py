@@ -1,5 +1,5 @@
 from mercado import db
-
+# Erro
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user = db.Column(db.String(30), unique=True, nullable=False)
