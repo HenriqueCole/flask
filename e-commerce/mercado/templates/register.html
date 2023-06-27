@@ -8,25 +8,34 @@
   <body class="text-center">
     <div class="container">
       <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png" style="width: 200px;">
-      <h1 class="h3 mb-3 font-weigth-normal">
-        Please, create you account
+      <h1 style="color: #8257e5;" class="h3 mb-3 font-weigth-normal">
+        Create your account
       </h1>
       <form method="post" class="form-register" style="color: whitesmoke;">
         {{form.hidden_tag()}}
-        {{form.user.label()}}
-        {{form.user(class="form-control", placeholder="Type the username")}}
 
-        {{form.email.label()}}
-        {{form.email(class="form-control", placeholder="Type the email")}}
+        <div style="display: flex; justify-content: start; color: #8257e5 ;font-weight: bold; margin-bottom: 0.5rem;">
+          {{form.user.label()}}
+        </div>
+        {{form.user(class="form-control", style="background-color: transparent; margin-bottom: 1rem; color: #FFF ;border: #ffffff38 solid 2px;", placeholder="Type the username")}}
 
-        {{form.password1.label()}}
-        {{form.password1(class="form-control", placeholder="Type the password")}}
+        <div style="display: flex; justify-content: start; color: #8257e5 ;font-weight: bold; margin-bottom: 0.5rem;">
+          {{form.email.label()}}
+        </div>
+        {{form.email(class="form-control", style="background-color: transparent; margin-bottom: 1rem; color: #FFF ;border: #ffffff38 solid 2px;", placeholder="Type the email")}}
 
-        {{form.password2.label()}}
-        {{form.password2(class="form-control", placeholder="Confirm the password")}}
+        <div style="display: flex; justify-content: start; color: #8257e5 ;font-weight: bold; margin-bottom: 0.5rem;">
+          {{form.password1.label()}}
+        </div>
+        {{form.password1(class="form-control", style="background-color: transparent; margin-bottom: 1rem; color: #FFF ;border: #ffffff38 solid 2px;", placeholder="Type the password")}}
+
+        <div style="display: flex; justify-content: start; color: #8257e5 ;font-weight: bold; margin-bottom: 0.5rem;">
+          {{form.password2.label()}}
+        </div>
+        {{form.password2(class="form-control", style="background-color: transparent; margin-bottom: 1rem; color: #FFF ;border: #ffffff38 solid 2px;", placeholder="Confirm the password")}}
         <br>
-        <div class="d-grid">
-          {{form.submit(class="btn btn-lg btn-primary btn-block", value="Create Account")}}
+        <div style="margin-bottom: 3rem;">
+          {{form.submit(class="btn btn-lg btn-primary btn-block",style="background-color: #8257e5; font-size: 1rem", value="Create Account")}}
         </div>
       </form>
     </div>
