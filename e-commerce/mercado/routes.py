@@ -1,5 +1,5 @@
 from mercado import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from mercado.models import Item, User
 from mercado.forms import CadastroForm
 from mercado import db
@@ -27,5 +27,5 @@ def register_page():
         return redirect(url_for("product_page"))
     if form.errors != {}:
         for err_msg in form.errors.values():
-            print(f"Ocorreu um erro: {err_msg}")
+            flash(f'Erro ao cadastrar: {err_msg}', category='danger')
     return render_template("register.html", form=form)

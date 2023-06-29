@@ -1,6 +1,5 @@
 from mercado import db
-# Erro
-
+from mercado import bcrypt
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -9,6 +8,14 @@ class User(db.Model):
     password = db.Column(db.String(60), nullable=False)
     value = db.Column(db.Integer, nullable=False, default=5000)
     items = db.relationship('Item', backref='owner_user', lazy=True)
+    
+    @property
+    def password_hash(self):
+        return self.password
+    
+    @password_hash.setter
+    def password_hash(self, plain_text_password):
+        self.password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
 
 class Item(db.Model):
