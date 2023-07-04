@@ -10,11 +10,11 @@ class User(db.Model):
     items = db.relationship('Item', backref='owner_user', lazy=True)
     
     @property
-    def password_hash(self):
+    def passwordcrip(self):
         return self.password
     
-    @password_hash.setter
-    def password_hash(self, plain_text_password):
+    @passwordcrip.setter
+    def passwordcrip(self, plain_text_password):
         self.password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
 

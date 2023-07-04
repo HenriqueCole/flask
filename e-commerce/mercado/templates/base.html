@@ -45,7 +45,7 @@
             </div>
             <div class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
+                <a class="nav-link active" aria-current="page" href="{{url_for('login_page')}}"
                   >Login</a
                 >
               </li>
@@ -84,7 +84,7 @@
             </div>
           </div>
         {% endfor %}
-      {% endif %}
+      {% endif %} 
     {% endwith %}
     {% block content %}
     
