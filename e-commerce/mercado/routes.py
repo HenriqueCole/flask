@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for, flash
 from mercado.models import Item, User
 from mercado.forms import CadastroForm, LoginForm
 from mercado import db
+from flask_login import login_user
 
 @app.route('/')
 def index():
@@ -33,4 +34,14 @@ def register_page():
 @app.route("/login", methods=["GET", "POST"])
 def login_page():
     form = LoginForm()
+    if  form.validate_on_submit():
+        attempted_user = User.query.filter_by(user=form.user.data).first()
+        if attempted_user and attempted_user.convert_password(
+                raw_password=form.password.data
+        ):
+            login_user(attempted_user)
+            flash(f'Login successful! Welcome {attempted_user.user}', category='success')
+            return redirect(url_for("product_page"))
+        else:
+            flash('User or password incorrect! Try again', category='danger')
     return render_template("login.html", form=form)
