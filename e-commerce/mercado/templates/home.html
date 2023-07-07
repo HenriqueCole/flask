@@ -1,5 +1,20 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock %} {% block content
 %}
-<h1 style="text-align: center">Home page</h1>
-<hr />
+<div class="py-5">
+  <header
+    class="h-100 p-5 text-white bg-dark text-center justify-content-center align-items-center"
+  >
+    <h1 class="display-5 fw-bold">App Market</h1>
+    <p class="fs-4">
+      Welcome to the App Market, the best place to buy apps, please click on the
+      button below.
+    </p>
+    <a class="btn btn-success" type="button" href="{{url_for('product_page')}}">
+      <i
+        class="fas fa-shopping-cart me-2 d-none d-sm-inline d-md-inline d-lg-inline d-xl-inline"
+      ></i>
+      Start
+    </a>
+  </header>
+</div>
 {% endblock %}

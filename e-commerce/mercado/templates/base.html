@@ -43,26 +43,58 @@
                 >
               </li>
             </div>
-            <div class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{url_for('login_page')}}"
-                  >Login</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{url_for('register_page')}}">
-                  Cadastro
-                </a>
-              </li>
-            </div>
           </ul>
+
+          {% if current_user.is_authenticated %}
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" style="color: lawngreen; font-weight: bold">
+              <i class="fas fa-coins"></i>
+              {{ current_user.valueFormat }}
+            </a>
+            <a class="nav-link">Welcome, {{current_user.user}}</a>
+            <a
+              class="nav-link"
+              href="{{
+              url_for('logout_page')
+            }}
+            "
+              >Logout</a
+            >
+          </div>
+          {% else %}
+          <div class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{{url_for('login_page')}}"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{{url_for('register_page')}}"
+              >
+                Cadastro
+              </a>
+            </li>
+          </div>
+
+          {% endif %}
+
           <form class="d-flex">
             <input
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style="background-color: transparent; border: rgba(255, 255, 255, 0.548) solid 2px; color: #FFF;"
+              style="
+                background-color: transparent;
+                border: rgba(255, 255, 255, 0.548) solid 2px;
+                color: #fff;
+              "
             />
             <button class="btn btn-outline-success" type="submit">
               Search
@@ -72,23 +104,24 @@
       </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="container">
-            <div 
-            class="alert alert-danger alert-dismissible fade show small" role="alert" 
-            style="background-color: rgb(187, 19, 19); border: none;">
-              <span style="color: #FFF; font-weight: bold;">{{message}}</span>
-              <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %} 
-    {% endwith %}
-    {% block content %}
-    
-    {% endblock %}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="container">
+      <div
+        class="alert alert-danger alert-dismissible fade show small"
+        role="alert"
+        style="border: none"
+      >
+        <span style="color: #fff; font-weight: bold">{{message}}</span>
+        <button
+          type="button"
+          class="btn-close text-white"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
@@ -97,6 +130,10 @@
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/c50fcbf383.js"
       crossorigin="anonymous"
     ></script>
   </body>

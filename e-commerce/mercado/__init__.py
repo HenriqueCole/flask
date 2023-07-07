@@ -13,4 +13,8 @@ login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
 login_manager.init_app(app)
 
+login_manager.login_view = "login_page"
+login_manager.login_message = "Please login to access this page."
+login_manager.login_message_category = "info"
+
 from mercado import routes
