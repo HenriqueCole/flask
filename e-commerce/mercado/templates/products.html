@@ -17,20 +17,24 @@ content %}
           <th scope="col">Name</th>
           <th scope="col">Bar code</th>
           <th scope="col">Price</th>
-          <th scope="col">Description</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        {% for item in items %}
+        {% for item in items %} {% include 'includes/products_modal.html' %}
         <tr>
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.bar_code}}</td>
           <td>{{item.price}}</td>
-          <td>{{item.description}}</td>
           <td>
-            <button class="btn btn-outline btn-info">More info</button>
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal-{{item.id}}"
+              class="btn btn-outline btn-info"
+            >
+              More info
+            </button>
             <button class="btn btn-outline btn-success">Buy product</button>
           </td>
         </tr>
